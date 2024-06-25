@@ -18,6 +18,7 @@ const CreateForm = ({ onSubmit }: Props) => {
 
   const onFormSubmit = async (data: FieldValues) => {
     await executePost({ data });
+    window.location.reload();
     onSubmit();
   };
 
