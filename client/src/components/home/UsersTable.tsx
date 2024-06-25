@@ -5,6 +5,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { format } from "date-fns";
 
 const TableHeaderCell = (props: Record<any, any>) => (
   <TableCell
@@ -21,6 +22,7 @@ type Props = {
     first_name: string;
     last_name: string;
     email: string;
+    birthdate: string;
   }[];
 };
 
@@ -30,7 +32,8 @@ const UsersTable = ({ users }: Props) => (
       <TableHead>
         <TableRow>
           <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell align="right">Email</TableHeaderCell>
+          <TableHeaderCell align="center">Email</TableHeaderCell>
+          <TableHeaderCell align="right">Birthdate</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -42,7 +45,8 @@ const UsersTable = ({ users }: Props) => (
             <TableCell component="th" scope="row">
               {`${user.first_name} ${user.last_name}`}
             </TableCell>
-            <TableCell align="right">{user.email}</TableCell>
+            <TableCell align="center">{user.email}</TableCell>
+            <TableCell align="right">{format(new Date(user.birthdate), 'MM/dd/yyyy')}</TableCell>
           </TableRow>
         ))}
       </TableBody>
